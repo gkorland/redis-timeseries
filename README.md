@@ -48,6 +48,7 @@ $ make test
 TS.CREATE KEY [retentionSecs] [maxSamplesPerChunk]
 ```
 * key - key name for timeseries
+
 Optional args:
 * retentionSecs - max age for samples compared to current time (in seconds).
     * Default: 0
@@ -87,21 +88,12 @@ if a compaction rule exits on a timeseries `TS.ADD` performance might be reduced
 ### TS.range - ranged query
 ```sql
 TS.RANGE key FROM_TIMESTAMP TO_TIMESTAMP [aggregationType] [bucketSizeSeconds]
-1) 1) (integer) 1487426646
-   2) "3.6800000000000002"
-2) 1) (integer) 1487426648
-   2) "3.6200000000000001"
-3) 1) (integer) 1487426650
-   2) "3.6200000000000001"
-4) 1) (integer) 1487426652
-   2) "3.6749999999999998"
-5) 1) (integer) 1487426654
-   2) "3.73"
 ```
 * key - key name for timeseries
+
 Optional args:
-    * aggregationType - one of the following: avg, sum, min, max, count, first, last
-    * bucketSizeSeconds - time bucket for aggregation in seconds
+* aggregationType - one of the following: avg, sum, min, max, count, first, last
+* bucketSizeSeconds - time bucket for aggregation in seconds
 
 #### Complexity
 TS.RANGE complexity is O(n/m+k*m)
@@ -141,10 +133,11 @@ TS.INCRBY key [VALUE] [RESET] [TIME_BUCKET]
 This command can be used as a counter/gauge that get automatic history as a time series.
 
 * key - key name for timeseries
+
 Optional args:
-    * VALUE - one of the following: avg, sum, min, max, count, first, last
-    * RESET - Should the current counter should be resetted when TIME_BUCKET is changes
-    * TIME_BUCKET - time bucket for resetting the current counter in seconds
+* VALUE - one of the following: avg, sum, min, max, count, first, last
+* RESET - Should the current counter should be resetted when TIME_BUCKET is changes
+* TIME_BUCKET - time bucket for resetting the current counter in seconds
 
 ### TS.info - query the series metadata
 ```sql
